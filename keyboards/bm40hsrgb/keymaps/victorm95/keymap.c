@@ -1,4 +1,4 @@
-/* Copyright 2020 tominabox1
+/* Copyright 2022 Victor Rivera
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,49 +32,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* BASE Colemak Mod-DH
    * ,-----------------------------------------------------------------------------------.
-   * |   Q  |   W  |   F  |   P  |   B  |      |      |   J  |   L  |   U  |   Y  |  '   |
+   * |   Q  |   W  |   F  |   P  |   B  | Copy |Paste |   J  |   L  |   U  |   Y  |  '   |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |   A  |   R  |   S  |   T  |   G  |      |      |   M  |   N  |   E  |   I  |  O   |
+   * |   A  |   R  |   S  |   T  |   G  |Prt Sc|AltGr |   M  |   N  |   E  |   I  |  O   |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |   Z  |   X  |   C  |   D  |   V  |      |      |   K  |   H  |   ,  |   .  |  /   |
+   * |   Z  |   X  |   C  |   D  |   V  | Next | Prev |   K  |   H  |   ,  |   .  |  /   |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      | Esc  |  Spc | Tab  |             |Enter | Bksp | Del  |      |      |
+   * | F13  | F14  | Esc  |  Spc | Tab  | Play/Pause  |Enter | Bksp | Del  | F15  | F16  |
    * `-----------------------------------------------------------------------------------'
    */
   [BASE] = LAYOUT_planck_mit(
-    KC_Q,         KC_W,         KC_F,             KC_P,             KC_B,             XXXXXXX,  XXXXXXX,  KC_J,             KC_L,             KC_U,             KC_Y,           KC_QUOT,
-    GUI_T(KC_A),  ALT_T(KC_R),  CTL_T(KC_S),      SFT_T(KC_T),      KC_G,             XXXXXXX,  XXXXXXX,  KC_M,             SFT_T(KC_N),      CTL_T(KC_E),      ALT_T(KC_I),    GUI_T(KC_O),
-    KC_Z,         ALGR_T(KC_X), KC_C,             KC_D,             KC_V,             XXXXXXX,  XXXXXXX,  KC_K,             KC_H,             KC_COMM,          ALGR_T(KC_DOT), KC_SLSH,
-    XXXXXXX,      XXXXXXX,      LT(MEDR, KC_ESC), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),       XXXXXXX,      LT(NSSL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), XXXXXXX,        XXXXXXX
+    KC_Q,         KC_W,         KC_F,             KC_P,             KC_B,             KC_COPY,  KC_PSTE,  KC_J,             KC_L,             KC_U,             KC_Y,           KC_QUOT,
+    GUI_T(KC_A),  ALT_T(KC_R),  CTL_T(KC_S),      SFT_T(KC_T),      KC_G,             KC_PSCR,  KC_ALGR,  KC_M,             SFT_T(KC_N),      CTL_T(KC_E),      ALT_T(KC_I),    GUI_T(KC_O),
+    KC_Z,         ALGR_T(KC_X), KC_C,             KC_D,             KC_V,             KC_MNXT,  KC_MPRV,  KC_K,             KC_H,             KC_COMM,          ALGR_T(KC_DOT), KC_SLSH,
+    KC_F13,       KC_F14,       LT(MEDR, KC_ESC), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),       KC_MPLY,      LT(NSSL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), KC_F15,         KC_F16
   ),
 
   /* NAVR Navigation
    * ,-----------------------------------------------------------------------------------.
-   * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
+   * |      |      |      |      |      |      |      | Redo |Paste | Copy | Cut  | Undo |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
+   * |      |      |      |      |      |      |      |      | Left | Down |  Up  |Right |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
+   * |      |      |      |      |      |      |      |      | Home |Pg Dn |Pg Up | End  |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+   * |      |      |      |      |      |             |Enter | Bksp | Del  | F17  | F18  |
    * `-----------------------------------------------------------------------------------'
    */
   [NAVR] = LAYOUT_planck_mit(
-    XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, C(S(KC_Z)),    KC_PSTE,    KC_COPY, KC_CUT, KC_UNDO,
-    XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    KC_LEFT,    KC_DOWN, KC_UP,  KC_RGHT,
-    XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         KC_ENT, LT(NSL, KC_BSPC), KC_DEL, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(S(KC_Z)), KC_PSTE,          KC_COPY, KC_CUT,  KC_UNDO,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_LEFT,          KC_DOWN, KC_UP,   KC_RGHT,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_HOME,          KC_PGDN, KC_PGUP, KC_END,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,     KC_ENT,     LT(NSL, KC_BSPC), KC_DEL,  KC_F17,  KC_F18
   ),
 
   /* MOUR Mouse
    * ,-----------------------------------------------------------------------------------.
-   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+   * |      |      |      |      |      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+   * |      |      |      |      |      |      |      |      |MC Lft|MC Dn |MC Up |MC Rgt|
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+   * |      |      |      |      |      |      |      |      |MW Lft|MW Dn |MW Up |MW Rgt|
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+   * |      |      |      |      |      |             |      |Btn 1 |Btn 3 |Btn 2 |      |
    * `-----------------------------------------------------------------------------------'
    */
   [MOUR] = LAYOUT_planck_mit(
@@ -86,13 +86,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* MEDR Media
    * ,-----------------------------------------------------------------------------------.
-   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+   * |      |      |      |      |      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+   * |      |      |      |      |      |      |      |      | Prev | Vol- | Vol+ | Next |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+   * |      |      |      |      |      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+   * |      |      |      |      |      |             | Stop | Play | Mute |      |      |
    * `-----------------------------------------------------------------------------------'
    */
   [MEDR] = LAYOUT_planck_mit(
@@ -104,31 +104,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* NSL Numeral and Symbols
    * ,-----------------------------------------------------------------------------------.
-   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+   * |   [  |   7  |   8  |   9  |   ]  |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+   * |   ;  |   4  |  F2  |  F3  |   =  |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+   * |   `  |   1  |   2  |   3  |   \  |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+   * |  F19 |  F20 |   .  |   0  |   -  |             |      |      |      |      |      |
    * `-----------------------------------------------------------------------------------'
    */
   [NSL] = LAYOUT_planck_mit(
-    KC_LBRC, KC_7,    KC_8,   KC_9, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_SCLN, KC_4,    KC_5,   KC_6, KC_EQL,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_GRV,  KC_1,    KC_2,   KC_3, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, KC_DOT, LT(NAVR, KC_0), KC_MINS, XXXXXXX,     XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_LBRC, KC_7,    KC_8,   KC_9,           KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_SCLN, KC_4,    KC_5,   KC_6,           KC_EQL,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_GRV,  KC_1,    KC_2,   KC_3,           KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_F19,  KC_F20,  KC_DOT, LT(NAVR, KC_0), KC_MINS, XXXXXXX,     XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
   /* NSSL Shifted Numerals and Symbols
    * ,-----------------------------------------------------------------------------------.
-   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+   * |   {  |   &  |   *  |   (  |   }  |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+   * |   :  |   $  |   %  |   ^  |   +  |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+   * |   ~  |   !  |   @  |   #  |   |  |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+   * |      |      |   (  |   )  |   _  |             |      |      |      |      |      |
    * `-----------------------------------------------------------------------------------'
    */
   [NSSL] = LAYOUT_planck_mit(
@@ -140,13 +140,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* FUNL Function and System
    * ,-----------------------------------------------------------------------------------.
-   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+   * |  F12 |  F7  |  F8  |  F9  |Prt Sc|      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+   * |  F11 |  F4  |  F5  |  F6  |      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+   * |  F10 |  F1  |  F2  |  F3  |      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+   * |      |      |      | Spc  | Tab  |             |      |      |      |      |      |
    * `-----------------------------------------------------------------------------------'
    */
   [FUNL] = LAYOUT_planck_mit(
@@ -158,60 +158,56 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* GAME Game
    * ,-----------------------------------------------------------------------------------.
-   * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
+   * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+   * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
+   * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |   /  |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | BLTog| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+   * | Ctrl | GUI  | Alt  |      | GSND |    Space    | GSND |      | Left | Down |Right |
    * `-----------------------------------------------------------------------------------'
    */
   [GAME] = LAYOUT_planck_mit(
-      /* KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, */
-      /* KC_LSFT,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, */
-      /* KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP, KC_SLSH , */
-      /* KC_LGUI, KC_LALT, MO(GSND), KC_TAB, KC_SPC,   MO(GSND),  KC_ENT,   KC_BSPC, KC_LEFT, KC_DOWN,   KC_RGHT */
-    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_SLSH,
-    KC_LCTL, KC_LGUI, KC_LALT, XXXXXXX,    MO(GSND), KC_SPC, MO(GSND), XXXXXXX,   KC_LEFT, KC_DOWN, KC_RGHT
+    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,     KC_COMM, KC_DOT,  KC_UP,   KC_SLSH,
+    KC_LCTL, KC_LGUI, KC_LALT, XXXXXXX, MO(GSND),     KC_SPC,       MO(GSND), XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT
   ),
 
   /* GSND Game Second
    * ,-----------------------------------------------------------------------------------.
-   * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
+   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Exit |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+   * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
+   * |      |      |      |      |      |      |      |      |      |      | Vol- | Vol+ |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | BLTog| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+   * |      |      |      |      |      |             |      |      | Play | Prev | Next |
    * `-----------------------------------------------------------------------------------'
    */
   [GSND] = LAYOUT_planck_mit(
-      KC_GRV, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TG(GAME),
+      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TG(GAME),
       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  KC_VOLD, KC_VOLU ,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU ,
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT
   ),
 
   /* MISC Misc
    * ,-----------------------------------------------------------------------------------.
-   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+   * |      | Reset| Debug| RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+   * |      |      |      | Game | Game | Game | Game |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+   * |      |      |      |      |      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+   * |      |      |      |      |      |             |      |      |      |      |      |
    * `-----------------------------------------------------------------------------------'
    */
   [MISC] = LAYOUT_planck_mit(
-    XXXXXXX,  RESET,   DEBUG,   RGB_TOG,  RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, XXXXXXX,
-    XXXXXXX,  XXXXXXX,   XXXXXXX,   TG(GAME),  TG(GAME), TG(GAME), TG(GAME), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_F10,  KC_F1,   KC_F2,   KC_F3,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC, KC_TAB,      XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, RESET,   DEBUG,   RGB_TOG,  RGB_MOD,  RGB_HUI,  RGB_HUD,  RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, TG(GAME), TG(GAME), TG(GAME), TG(GAME), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,       XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   )
 
 };
