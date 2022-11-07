@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+------+------+------+------+------+------|
    * |   A  |   R  |   S  |   T  |   G  |Prt Sc|AltGr |   M  |   N  |   E  |   I  |  O   |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |   Z  |   X  |   C  |   D  |   V  | Next | Prev |   K  |   H  |   ,  |   .  |  /   |
+   * |   Z  |   X  |   C  |   D  |   V  | Prev | Next |   K  |   H  |   ,  |   .  |  /   |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
    * | F13  | F14  | Esc  |  Spc | Tab  | Play/Pause  |Enter | Bksp | Del  | F15  | F16  |
    * `-----------------------------------------------------------------------------------'
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_planck_mit(
     KC_Q,         KC_W,         KC_F,             KC_P,             KC_B,             KC_COPY,  KC_PSTE,  KC_J,             KC_L,             KC_U,             KC_Y,           KC_QUOT,
     GUI_T(KC_A),  ALT_T(KC_R),  CTL_T(KC_S),      SFT_T(KC_T),      KC_G,             KC_PSCR,  KC_ALGR,  KC_M,             SFT_T(KC_N),      CTL_T(KC_E),      ALT_T(KC_I),    GUI_T(KC_O),
-    KC_Z,         ALGR_T(KC_X), KC_C,             KC_D,             KC_V,             KC_MNXT,  KC_MPRV,  KC_K,             KC_H,             KC_COMM,          ALGR_T(KC_DOT), KC_SLSH,
+    KC_Z,         ALGR_T(KC_X), KC_C,             KC_D,             KC_V,             KC_MPRV,  KC_MNXT,  KC_K,             KC_H,             KC_COMM,          ALGR_T(KC_DOT), KC_SLSH,
     KC_F13,       KC_F14,       LT(MEDR, KC_ESC), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),       KC_MPLY,      LT(NSSL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), KC_F15,         KC_F16
   ),
 
