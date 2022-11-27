@@ -23,6 +23,8 @@ enum layers {
   NSSL,
   NSL,
   FUNL,
+  QWER,
+  QSND,
   GAME,
   GSND,
   MISC
@@ -43,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [BASE] = LAYOUT_planck_mit(
     KC_Q,         KC_W,         KC_F,             KC_P,             KC_B,             KC_COPY,  KC_PSTE,  KC_J,             KC_L,             KC_U,             KC_Y,           KC_QUOT,
-    GUI_T(KC_A),  ALT_T(KC_R),  CTL_T(KC_S),      SFT_T(KC_T),      KC_G,             KC_PSCR,  KC_ALGR,  KC_M,             SFT_T(KC_N),      CTL_T(KC_E),      ALT_T(KC_I),    GUI_T(KC_O),
+    GUI_T(KC_A),  ALT_T(KC_R),  CTL_T(KC_S),      LSFT_T(KC_T),     KC_G,             KC_PSCR,  KC_ALGR,  KC_M,             RSFT_T(KC_N),     CTL_T(KC_E),      ALT_T(KC_I),    GUI_T(KC_O),
     KC_Z,         ALGR_T(KC_X), KC_C,             KC_D,             KC_V,             KC_MPRV,  KC_MNXT,  KC_K,             KC_H,             KC_COMM,          ALGR_T(KC_DOT), KC_SLSH,
     KC_F13,       KC_F14,       LT(MEDR, KC_ESC), LT(NAVR, KC_SPC), LT(MOUR, KC_TAB),       KC_MPLY,      LT(NSSL, KC_ENT), LT(NSL, KC_BSPC), LT(FUNL, KC_DEL), KC_F15,         KC_F16
   ),
@@ -156,6 +158,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC, KC_TAB,      XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
+  /* QWER Qwerty
+   * ,-----------------------------------------------------------------------------------.
+   * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
+   * |------+------+------+------+------+------+------+------+------+------+------+------|
+   * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
+   * |------+------+------+------+------+------+------+------+------+------+------+------|
+   * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |   /  |
+   * |------+------+------+------+------+------+------+------+------+------+------+------|
+   * | Ctrl | GUI  | Alt  | Alt  | GSND |    Space    | GSND |      | Left | Down |Right |
+   * `-----------------------------------------------------------------------------------'
+   */
+  [QWER] = LAYOUT_planck_mit(
+    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,     KC_COMM, KC_DOT,  KC_UP,   KC_SLSH,
+    KC_LCTL, KC_LGUI, KC_LALT, KC_LALT, MO(QSND),     KC_SPC,       MO(QSND), XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT
+  ),
+
+  /* QSND Qwerty Second
+   * ,-----------------------------------------------------------------------------------.
+   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Exit |
+   * |------+------+------+------+------+------+------+------+------+------+------+------|
+   * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
+   * |------+------+------+------+------+------+------+------+------+------+------+------|
+   * |  F13 |  F14 |  F15 |  F16 |      |      |      |      |      |      | Vol- | Vol+ |
+   * |------+------+------+------+------+------+------+------+------+------+------+------|
+   * |      |      |      |      |      |             |      |      | Play | Prev | Next |
+   * `-----------------------------------------------------------------------------------'
+   */
+  [QSND] = LAYOUT_planck_mit(
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TG(QWER),
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+    KC_F13,  KC_F14,  KC_F15,  KC_F16,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU ,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT
+  ),
+
   /* GAME Game
    * ,-----------------------------------------------------------------------------------.
    * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
@@ -164,21 +202,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+------+------+------+------+------+------|
    * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |   /  |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Ctrl | GUI  | Alt  |      | GSND |    Space    | GSND |      | Left | Down |Right |
+   * | Ctrl | GUI  | Alt  | Alt  | GSND |    Space    | GSND |      | Left | Down |Right |
    * `-----------------------------------------------------------------------------------'
    */
   [GAME] = LAYOUT_planck_mit(
-    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,     KC_COMM, KC_DOT,  KC_UP,   KC_SLSH,
-    KC_LCTL, KC_LGUI, KC_LALT, XXXXXXX, MO(GSND),     KC_SPC,       MO(GSND), XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,     KC_5,    KC_6,    KC_7,     KC_8,  KC_9,    KC_0,    KC_BSPC,
+    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,  KC_O,    KC_P,    KC_ENT,
+    KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,  KC_L,    KC_UP,   KC_SLSH,
+    KC_LCTL, KC_LGUI, KC_LALT, KC_LALT, MO(GSND),     KC_SPC,       MO(GSND), KC_F1, KC_LEFT, KC_DOWN, KC_RGHT
   ),
 
   /* GSND Game Second
    * ,-----------------------------------------------------------------------------------.
-   * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Exit |
+   * |   `  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 | Exit |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
+   * |      |  F12 |  F12 |  F13 |  F14 |  F15 |  F16 |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
    * |      |      |      |      |      |      |      |      |      |      | Vol- | Vol+ |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -186,17 +224,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------------------------------'
    */
   [GSND] = LAYOUT_planck_mit(
-      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TG(GAME),
-      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU ,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT
+    KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  TG(GAME),
+    XXXXXXX, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU ,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT
   ),
 
   /* MISC Misc
    * ,-----------------------------------------------------------------------------------.
    * |      | Reset| Debug| RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      | Game | Game | Game | Game |      |      |      |      |      |
+   * |      |      |      | Game | Qwer |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
    * |      |      |      |      |      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -204,10 +242,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------------------------------'
    */
   [MISC] = LAYOUT_planck_mit(
-    XXXXXXX, RESET,   DEBUG,   RGB_TOG,  RGB_MOD,  RGB_HUI,  RGB_HUD,  RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, TG(GAME), TG(GAME), TG(GAME), TG(GAME), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,       XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, RESET,   DEBUG,   RGB_TOG,  RGB_MOD,  RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, TG(GAME), TG(QWER), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,       XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   )
 
 };
